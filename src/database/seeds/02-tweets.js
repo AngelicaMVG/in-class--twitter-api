@@ -3,6 +3,11 @@ const dataRows = [{
   likes: '2400',
   retweets: '1000',
   userId: 1
+}, {
+  description: 'REST routes',
+  likes: 2,
+  retweets: 10,
+  userId: 1
 }];
 
 exports.seed = function(knex, Promise) {
