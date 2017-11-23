@@ -52,8 +52,17 @@ class User extends Password(objection.Model) {
   }
 
   static get relationMappings(){
-    return {
+    const Profile = require('./Profile');
 
+    return {
+      profile: {
+        relation: Model.HasOneRelation,
+        modelClass: Profile,
+        join: {
+          from: 'user.id',
+          to: 'profile.userId'
+        }
+      }
     }
   }
 }

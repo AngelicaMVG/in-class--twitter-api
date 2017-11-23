@@ -1,13 +1,21 @@
 const Router = require('express').Router;
 const Tweet = require('../models/Tweet.js');
 const Profile = require('../models/Profile.js');
+const User = require('../models/User.js');
 
 const apiRouter = Router();
 
-function getAllUsers (req, res) {
+function getAllProfiles (req, res) {
   Profile
     .query()
-    .eager('tweets')
+    .eager('[tweets, user]')
+    .then(data => res.json(data));
+}
+
+function getAllUsers (req, res) {
+  User
+    .query()
+    .eager('profile')
     .then(data => res.json(data));
 }
 
@@ -73,6 +81,9 @@ function deleteTweetById (req, res) {
 }
 
 // Users Endpoints
+apiRouter
+  .get('/profiles', getAllProfiles);
+
 apiRouter
   .get('/users', getAllUsers);
 
