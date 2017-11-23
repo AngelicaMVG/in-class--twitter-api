@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 app.use(cookieSession({
-  name: 'cookiemonster',
+  name: 'cookieOne',
   secret: 'superdupersupersecret',
   httpOnly: true,
   signed: false
